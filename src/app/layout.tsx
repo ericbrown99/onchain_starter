@@ -2,11 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { type ReactNode } from 'react'
-import { headers } from 'next/headers'
-import { cookieToInitialState } from 'wagmi'
-
-import { config } from '@/wagmi'
-import { Providers } from './providers'
+import OnchainProviders from './providers'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -16,14 +12,10 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout(props: { children: ReactNode }) {
-  const initialState = cookieToInitialState(
-    config,
-    headers().get('cookie')
-  )
   return (
     <html lang="en" className={`${inter.variable}`}>
       <body className="font-sans bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark">
-        <Providers initialState={initialState}>{props.children}</Providers>
+        <OnchainProviders>{props.children}</OnchainProviders>
       </body>
     </html>
   )
