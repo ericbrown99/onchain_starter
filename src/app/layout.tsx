@@ -8,7 +8,7 @@ import { cookieToInitialState } from 'wagmi'
 import { config } from '@/wagmi'
 import { Providers } from './providers'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
   title: 'Create Wagmi',
@@ -21,8 +21,8 @@ export default function RootLayout(props: { children: ReactNode }) {
     headers().get('cookie')
   )
   return (
-    <html lang="en">
-      <body >
+    <html lang="en" className={`${inter.variable}`}>
+      <body className="font-sans bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark">
         <Providers initialState={initialState}>{props.children}</Providers>
       </body>
     </html>

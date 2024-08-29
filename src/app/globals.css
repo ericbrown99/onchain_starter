@@ -1,32 +1,25 @@
-:root {
-  background-color: #181818;
-  color: rgba(255, 255, 255, 0.87);
-  color-scheme: light dark;
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  font-synthesis: none;
-  font-weight: 400;
-  line-height: 1.5;
-  text-rendering: optimizeLegibility;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    background-color: #f8f8f8;
-    color: #181818;
-  }
-}
-
-@font-face{ 
+@font-face {
   font-family: 'onchain';
   src: url('../public/BritneyOnchainVF.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-body {
-  font-family: 'onchain', sans-serif;
+@layer base {
+  :root {
+    @apply bg-background-light text-text-light dark:bg-background-dark dark:text-text-dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-onchain;
+  }
 }
